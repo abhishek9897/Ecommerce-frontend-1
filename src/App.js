@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 import Header from "./Components/Header";
@@ -8,10 +8,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SpecificProduct from "./SpecificProduct";
 import CartItems from "./CartItems";
 import Sidebar from "./Sidebar";
+import { UseTheme } from "./demo";
 
 function App() {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
+  const { theme } = UseTheme();
+  console.log("sfhbdf", theme);
 
   const handleFilter = (min, max, search, option) => {
     setData(() => {
@@ -58,7 +61,7 @@ function App() {
       <Header />
       <div
         className="mt-5 pt-2 "
-        style={{ backgroundColor: "#22092C", color: "white" }}
+        // style={{ backgroundColor: "#22092C", color: "white" }}
       >
         <div
           style={{
@@ -76,7 +79,12 @@ function App() {
             // style={{ position: "fixed", top: 0, left: 0, right: 0 }}
           />
         </div>
-        <div es={10} className="page-wrapper">
+        <div
+          es={10}
+          className={`page-wrapper ${
+            theme == "light" ? "bg-primary" : "bg-secondary"
+          }`}
+        >
           <Routes>
             <Route path="/" element={<Products data={data} />} />
             <Route path="/:id" element={<SpecificProduct />} />

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -5,11 +6,14 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { UseTheme } from "../demo";
+import { VscColorMode } from "react-icons/vsc";
 
 function Header() {
   const count = useSelector((state) => {
     return state.cart.item.length;
   });
+  const { handleToggle } = UseTheme();
   console.log(count);
 
   const navigate = useNavigate();
@@ -24,7 +28,15 @@ function Header() {
         <Navbar.Brand>Abhi Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav " />
         <Navbar.Collapse id="basic-navbar-nav ">
-          <Nav className="w-100 justify-content-end">
+          <Nav className="w-100 justify-content-end d-flex align-items-center ">
+            <div
+              onClick={handleToggle}
+              className="mb-1 "
+              style={{ color: "white", cursor: "pointer" }}
+            >
+              <VscColorMode />
+            </div>
+
             <Button
               onClick={() => navigate("/")}
               style={{ backgroundColor: "transparent", border: "0px" }}
