@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CustomProduct from "./CustomProduct";
 import { Container, Col, Row } from "react-bootstrap/esm";
 import { useNavigate } from "react-router-dom";
-
+import "../style.css"
 function Products({data}) {
  
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Products({data}) {
   return (
     <div>
       <Container>
-        <Row>
+        <Row className="page-wrapper">
          
           {data?.map((ele, index) => {
             return (

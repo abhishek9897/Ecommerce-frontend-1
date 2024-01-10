@@ -7,7 +7,6 @@ import Products from "./Components/Products";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SpecificProduct from "./SpecificProduct";
 import CartItems from "./CartItems";
-import { Row, Col } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 
 function App() {
@@ -57,34 +56,34 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Row
+      <div
         className="mt-5 pt-2 "
         style={{ backgroundColor: "#22092C", color: "white" }}
       >
-        <Col
-          xxl={2}
-          xl={2}
-          lg={2}
-          md={2}
-          sm={2}
-          xs={2}
+        <div
           style={{
             backgroundColor: "#2D3250",
             color: "white",
-            height: "90vh",
-            position: "",
+            height: "95vh",
+            position: "fixed",
+            top: "55px",
+            width: "230px",
+            zIndex: "1001",
           }}
         >
-          <Sidebar filter={handleFilter} />
-        </Col>
-        <Col xxl={10} xl={10} lg={10} md={10} sm={10} es={10}>
+          <Sidebar
+            filter={handleFilter}
+            // style={{ position: "fixed", top: 0, left: 0, right: 0 }}
+          />
+        </div>
+        <div es={10} className="page-wrapper">
           <Routes>
             <Route path="/" element={<Products data={data} />} />
             <Route path="/:id" element={<SpecificProduct />} />
             <Route path="/CartItems" element={<CartItems />} />
           </Routes>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 }
