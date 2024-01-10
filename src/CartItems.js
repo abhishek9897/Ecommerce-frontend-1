@@ -5,6 +5,7 @@ import { RemoveFromCart } from "./Components/Redux-toolkit/CartSlice";
 import NoItems from "./Components/NoItems";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 function CartItems() {
   const CartData = useSelector((state) => state.cart.item);
@@ -29,7 +30,7 @@ function CartItems() {
   // };
 
   return (
-    <div className="w-75 m-auto">
+    <div className="w-75 m-auto page-wrapper">
       {CartData.length !== 0 ? (
         <Container className="mt-5">
           <Row>

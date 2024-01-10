@@ -4,7 +4,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { AddToCart } from "./Components/Redux-toolkit/CartSlice";
-
+import "./style.css";
 function SpecificProduct() {
   const [data, setData] = useState({});
   const [quantity, setQuantity] = useState(1);
@@ -12,8 +12,8 @@ function SpecificProduct() {
   const params = useParams();
   console.log("param is", 1 + Number(params.id));
 
-  const handleAddToCart = (item,quantity) => {
-    dispatch(AddToCart({item, quantity}));
+  const handleAddToCart = (item, quantity) => {
+    dispatch(AddToCart({ item, quantity }));
   };
   const handleQuantity = (e) => {
     setQuantity(e.target.value);
@@ -32,7 +32,7 @@ function SpecificProduct() {
   return (
     <div>
       <Container>
-        <Row>
+        <Row className="page-wrapper">
           <Col xxl={5} xl={5} lg={5} md={5} sm={5} className="text-center">
             <div className="h-100 d-flex align-items-center justify-content-center">
               <img src={data.image} alt={data} className="w-50 h-50" />
@@ -61,7 +61,7 @@ function SpecificProduct() {
                     border: "1px solid #ff3e6c",
                   }}
                   className="btn px-4"
-                  onClick={() => handleAddToCart(data,quantity)}
+                  onClick={() => handleAddToCart(data, quantity)}
                 >
                   Add To Cart
                 </Button>
